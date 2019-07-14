@@ -42,9 +42,9 @@ class HttpRequest {
   }
   request(options) {
     options = Object.assign(this.getConfig(), options);
-    const instance = axios.create(options);
+    const instance = axios.create();
     this.interceptors(instance, options.url);
-    return instance;
+    return instance(options);
   }
 }
 
