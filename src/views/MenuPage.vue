@@ -7,6 +7,11 @@
         <div slot="title">3333</div>
         <my-menu-item>3333-1</my-menu-item>
         <my-menu-item>3333-2</my-menu-item>
+        <my-submenu>
+          <div slot="title">3333-3</div>
+          <my-menu-item>3333-3-1</my-menu-item>
+          <my-menu-item>3333-3-2</my-menu-item>
+        </my-submenu>
       </my-submenu>
     </my-menu>
   </div>

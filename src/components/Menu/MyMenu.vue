@@ -8,15 +8,14 @@
 export default {};
 </script>
 
-<style lang="less" scoped>
-.my-menu {
-  color: #fff;
+<style lang="less">
+ul {
   padding: 0;
   margin: 0;
+}
+.my-menu {
+  color: #fff;
   width: 200px;
-  ul {
-    padding: 0;
-    margin: 0;
-  }
+  background: #515a6e;
 }
 </style>

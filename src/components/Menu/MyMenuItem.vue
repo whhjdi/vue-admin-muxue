@@ -10,6 +10,5 @@ export default {};
 
 <style lang="less" scoped>
 .my-menu-item {
-  background: rgb(126, 126, 126);
 }
 </style>

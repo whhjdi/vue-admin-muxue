@@ -2,7 +2,11 @@
   <ul class="my-submenu">
     <div class="my-submenu-title" @click="handleClick">
       <slot name="title"></slot>
-      <svg class="icon" aria-hidden="true">
+      <svg
+        class="icon title-icon"
+        aria-hidden="true"
+        :style="{ transform: `rotate(${showChild ? 180 : 0}deg)` }"
+      >
         <use xlink:href="#m-up" />
       </svg>
     </div>
@@ -27,10 +31,17 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .my-submenu {
+  padding-left: 20px;
   &-title {
-    background: rgb(228, 99, 99);
+    position: relative;
+    & > .title-icon {
+      transition: all 300ms;
+      position: absolute;
+      top: 2px;
+      right: 4px;
+    }
   }
   &-child {
     overflow: hidden;
