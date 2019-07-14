@@ -2,6 +2,9 @@
   <ul class="my-submenu">
     <div class="my-submenu-title" @click="handleClick">
       <slot name="title"></slot>
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#m-up" />
+      </svg>
     </div>
     <div v-show="showChild" class="my-submenu-child">
       <slot></slot>
