@@ -9,6 +9,24 @@ const routes = [
     }
   },
   {
+    path: "/split-pane",
+    name: "SplitPane",
+    component: () =>
+      import(/* webpackChunkName: "SplitPane" */ "../views/SplitPanePage.vue"),
+    meta: {
+      title: "SplitPane"
+    }
+  },
+  {
+    path: "/menu-page",
+    name: "MenuPage",
+    component: () =>
+      import(/* webpackChunkName: "MenuPage" */ "../views/MenuPage.vue"),
+    meta: {
+      title: "MenuPage"
+    }
+  },
+  {
     path: "/about",
     name: "about",
     component: () =>
