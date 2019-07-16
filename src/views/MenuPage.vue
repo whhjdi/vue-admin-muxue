@@ -16,9 +16,9 @@
     </my-menu>-->
     <my-menu>
       <template v-for="(item, index) in list">
-        <my-menu-item v-if="!item.children" :key="`menu-item-${index}`">{{
-          item.title
-        }}</my-menu-item>
+        <my-menu-item v-if="!item.children" :key="`menu-item-${index}`">
+          {{ item.title }}
+        </my-menu-item>
         <re-submenu
           v-else
           :key="`menu-item-${index}`"
@@ -43,23 +43,28 @@ export default {
   data() {
     return {
       list: [
-        { title: "首页" },
+        { title: "首页", name: "首页" },
         {
           title: "组件",
+          name: "组件",
           children: [
             {
               title: "基础组件",
+              name: "基础组件",
               children: [
                 {
-                  title: "按钮"
+                  title: "按钮",
+                  name: "按钮"
                 }
               ]
             },
             {
               title: "其他组件",
+              name: "其他组件",
               children: [
                 {
-                  title: "split-pane"
+                  title: "split-pane",
+                  name: "split-pane"
                 }
               ]
             }

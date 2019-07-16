@@ -1,9 +1,10 @@
-import Home from "../views/Home.vue";
+import MyLayout from "@/layout/MyLayout";
 const routes = [
   {
     path: "/",
+    alias: "/home",
     name: "home",
-    component: Home,
+    component: MyLayout,
     meta: {
       title: "首页"
     }
