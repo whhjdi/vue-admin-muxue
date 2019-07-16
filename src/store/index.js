@@ -5,7 +5,7 @@ import getters from "./getters";
 import mutations from "./mutations";
 import actions from "./actions";
 import user from "./modules/user";
-import { saveToLocal } from "@/plugin/saveToLocal";
+import { saveToLocal } from "@/plugins/saveToLocal";
 Vue.use(Vuex);
 
 export default new Vuex.Store({

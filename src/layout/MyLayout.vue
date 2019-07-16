@@ -22,7 +22,7 @@ export default {
   },
   data() {
     return {
-      collapsed: false,
+      collapsed: true,
       list: [
         { title: "首页", icon: "ios-beaker" },
         {
@@ -31,6 +31,7 @@ export default {
           children: [
             {
               title: "基础组件",
+              icon: "ios-heart",
               children: [
                 {
                   title: "按钮"
@@ -42,7 +43,14 @@ export default {
               icon: "ios-beaker-outline",
               children: [
                 {
-                  title: "split-pane"
+                  title: "split-pane",
+                  icon: "ios-heart",
+                  children: [
+                    {
+                      title: "hello",
+                      icon: "ios-heart"
+                    }
+                  ]
                 }
               ]
             }
