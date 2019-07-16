@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  name: "MySubmenu",
   data() {
     return {
       showChild: false
@@ -33,18 +34,21 @@ export default {
 
 <style lang="less">
 .my-submenu {
-  padding-left: 20px;
   &-title {
+    line-height: 43px;
+    height: 43px;
     position: relative;
+    padding-left: 10px;
     & > .title-icon {
       transition: all 300ms;
       position: absolute;
-      top: 2px;
-      right: 4px;
+      top: 14px;
+      right: 10px;
     }
   }
   &-child {
     overflow: hidden;
+    padding-left: 20px;
   }
 }
 </style>

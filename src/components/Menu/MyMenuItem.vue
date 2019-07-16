@@ -7,8 +7,10 @@
 <script>
 export default {};
 </script>
-
 <style lang="less" scoped>
 .my-menu-item {
+  line-height: 43px;
+  height: 43px;
+  padding-left: 10px;
 }
 </style>
