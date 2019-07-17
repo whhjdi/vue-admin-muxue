@@ -16,7 +16,7 @@
           :key="`Dropdown_${index}_${i}`"
           :parent="item"
           :index="i"
-          iconColor="#515A6E"
+          iconColor="#rgba(0,0,0,0.9)"
           :showTitle="true"
         ></re-dropdown>
         <DropdownItem
@@ -45,7 +45,7 @@ export default {
     },
     iconColor: {
       type: String,
-      default: "#fff"
+      default: "rgb(255,255,255)"
     }
   },
   computed: {
@@ -66,4 +66,16 @@ export default {
 };
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.my-drop-menu {
+  padding: 5px 0;
+}
+.ivu-dropdown-menu {
+  .ivu-dropdown {
+    padding: 8px 0;
+    &:hover {
+      background: rgba(51, 51, 51, 0.1);
+    }
+  }
+}
+</style>

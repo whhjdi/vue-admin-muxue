@@ -2,7 +2,10 @@
   <Layout class="my-layout">
     <Sider v-model="collapsed" collapsible breakpoint="sm">
       <side-menu :collapsed="collapsed" :list="list">
-        <Icon type="ios-beaker-outline" />
+        <div class="logo">
+          <img src="../assets/images/logo.png" class="logo-img" />
+          <span v-show="!collapsed" class="logo-name">沐雪</span>
+        </div>
       </side-menu>
     </Sider>
     <Layout>
@@ -69,6 +72,19 @@ export default {
   &-header {
     background: #fff;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  }
+  .logo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    &-img {
+      width: 40px;
+      vertical-align: -12px;
+    }
+    &-name {
+      margin-left: 10px;
+      color: white;
+      font-size: 20px;
+    }
   }
 }
 </style>

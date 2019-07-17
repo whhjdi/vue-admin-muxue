@@ -80,6 +80,7 @@ export default {
 <style lang="less" scoped>
 .my-side-menu {
   width: 100%;
+  text-align: center;
   .my-drop-menu {
     display: block;
     width: 100%;
@@ -89,8 +90,6 @@ export default {
   .drap-wrapper > .ivu-dropdown {
     display: block;
     text-align: center;
-  }
-  .ivu-dropdown {
     padding: 10px 0;
   }
 }
