@@ -10,8 +10,9 @@
 </template>
 
 <script>
-import { getTableData } from "@/api/table";
+import { getTableData } from "@/api/data";
 import EditTable from "@/components/EditTable";
+
 export default {
   name: "TablePage",
   components: {

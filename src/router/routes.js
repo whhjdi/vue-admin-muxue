@@ -24,6 +24,15 @@ const routes = [
         }
       },
       {
+        path: "tree",
+        name: "Tree",
+        component: () =>
+          import(/* webpackChunkName: "Tree" */ "../views/TreePage.vue"),
+        meta: {
+          title: "Tree"
+        }
+      },
+      {
         path: "split-pane",
         name: "SplitPane",
         component: () =>

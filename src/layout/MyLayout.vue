@@ -45,6 +45,10 @@ export default {
                 {
                   title: "表格",
                   icon: "ios-barcode"
+                },
+                {
+                  title: "树",
+                  icon: "ios-game-controller-a"
                 }
               ]
             },
