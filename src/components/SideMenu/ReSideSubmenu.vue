@@ -1,7 +1,7 @@
 <template>
   <Submenu :name="parent.title">
     <template slot="title">
-      <Icon :type="parent.icon" />
+      <Icon :type="parent.icon" size="20" class="my-menu-item-icon" />
       {{ parent.title }}
     </template>
     <template v-for="(item, i) in parent.children">
@@ -12,7 +12,7 @@
         :key="`menu_item_${index}_${i}`"
       ></re-side-submenu>
       <menu-item v-else :name="item.title" :key="`menu_item_${index}_${i}`">
-        <Icon :type="item.icon" />
+        <Icon :type="item.icon" size="20" class="my-menu-item-icon" />
         {{ item.title }}
       </menu-item>
     </template>
@@ -32,4 +32,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.my-menu-item-icon {
+  vertical-align: -3px;
+}
+</style>

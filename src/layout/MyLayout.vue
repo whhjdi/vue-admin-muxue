@@ -10,7 +10,9 @@
     </Sider>
     <Layout>
       <Header class="my-layout-header">2</Header>
-      <Content>3</Content>
+      <Content class="my-content-wrapper">
+        <router-view></router-view>
+      </Content>
       <Footer>4</Footer>
     </Layout>
   </Layout>
@@ -27,33 +29,36 @@ export default {
     return {
       collapsed: true,
       list: [
-        { title: "首页", icon: "ios-beaker" },
+        { title: "首页", icon: "md-home" },
         {
           title: "组件",
-          icon: "ios-beaker",
+          icon: "md-ionitron",
           children: [
             {
               title: "基础组件",
-              icon: "ios-heart",
+              icon: "ios-leaf",
               children: [
                 {
-                  title: "按钮"
+                  title: "按钮",
+                  icon: "ios-archive"
+                },
+                {
+                  title: "表格",
+                  icon: "ios-barcode"
                 }
               ]
             },
             {
               title: "其他组件",
-              icon: "ios-beaker-outline",
+              icon: "md-magnet",
               children: [
                 {
                   title: "split-pane",
-                  icon: "ios-heart",
-                  children: [
-                    {
-                      title: "hello",
-                      icon: "ios-heart"
-                    }
-                  ]
+                  icon: "ios-heart"
+                },
+                {
+                  title: "test",
+                  icon: "ios-heart"
                 }
               ]
             }
@@ -76,6 +81,7 @@ export default {
   .logo {
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
     &-img {
       width: 40px;
       vertical-align: -12px;
@@ -85,6 +91,9 @@ export default {
       color: white;
       font-size: 20px;
     }
+  }
+  .my-content-wrapper {
+    padding: 18px;
   }
 }
 </style>

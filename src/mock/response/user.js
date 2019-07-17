@@ -1,5 +1,4 @@
-export const getUserInfo = options => {
-  console.log(options);
+export const getUserInfo = () => {
   return {
     name: "muxue"
   };

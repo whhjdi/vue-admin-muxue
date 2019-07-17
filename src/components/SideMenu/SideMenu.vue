@@ -16,7 +16,7 @@
           >{{ item.title }}</re-side-submenu
         >
         <menu-item v-else :name="item.title" :key="`menu_item_${index}`">
-          <Icon :type="item.icon" />
+          <Icon :type="item.icon" size="20" class="my-menu-item-icon" />
           {{ item.title }}
         </menu-item>
       </template>
@@ -39,7 +39,7 @@
           placement="right"
         >
           <span class="my-drop-menu" @click="handleClick(item.title)">
-            <Icon :type="item.icon" :size="20" />
+            <Icon :type="item.icon" size="20" />
           </span>
         </Tooltip>
       </template>
@@ -80,7 +80,6 @@ export default {
 <style lang="less" scoped>
 .my-side-menu {
   width: 100%;
-  text-align: center;
   .my-drop-menu {
     display: block;
     width: 100%;
@@ -91,6 +90,10 @@ export default {
     display: block;
     text-align: center;
     padding: 10px 0;
+  }
+  .my-menu-item-icon {
+    margin-right: 8px;
+    vertical-align: -4px;
   }
 }
 </style>

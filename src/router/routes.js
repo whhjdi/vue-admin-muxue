@@ -10,14 +10,33 @@ const routes = [
     }
   },
   {
-    path: "/split-pane",
-    name: "SplitPane",
-    component: () =>
-      import(/* webpackChunkName: "SplitPane" */ "../views/SplitPanePage.vue"),
-    meta: {
-      title: "SplitPane"
-    }
+    path: "/components",
+    name: "components",
+    component: MyLayout,
+    children: [
+      {
+        path: "table",
+        name: "Table",
+        component: () =>
+          import(/* webpackChunkName: "Table" */ "../views/TablePage.vue"),
+        meta: {
+          title: "Table"
+        }
+      },
+      {
+        path: "split-pane",
+        name: "SplitPane",
+        component: () =>
+          import(
+            /* webpackChunkName: "SplitPane" */ "../views/SplitPanePage.vue"
+          ),
+        meta: {
+          title: "SplitPane"
+        }
+      }
+    ]
   },
+
   {
     path: "/menu-page",
     name: "MenuPage",
