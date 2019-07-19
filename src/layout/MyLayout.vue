@@ -4,7 +4,7 @@
       <side-menu :collapsed="collapsed" :list="list">
         <div class="logo">
           <img src="../assets/images/logo.png" class="logo-img" />
-          <span v-show="!collapsed" class="logo-name">沐雪</span>
+          <span v-if="!collapsed" class="logo-name">沐雪</span>
         </div>
       </side-menu>
     </Sider>

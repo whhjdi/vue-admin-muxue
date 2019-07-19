@@ -40,6 +40,7 @@ export const putFolderToTree = folderList => {
         } else {
           item.children = children;
         }
+
         item.title = item.name;
         arr.push(item);
       }
@@ -48,4 +49,27 @@ export const putFolderToTree = folderList => {
   };
 
   return handle(0);
+};
+
+export const expandFolder = (folderTree, id) => {
+  return folderTree.map(item => {
+    if (item.type === "folder") {
+      if (item.id === id) {
+        item.expand = true;
+      } else {
+        if (item.children && item.children.length) {
+          //递归
+          item.children = expandFolder(item.children, id);
+          if (
+            item.children.some(child => {
+              return child.expand;
+            })
+          ) {
+            item.expand = true;
+          }
+        }
+      }
+    }
+    return item;
+  });
 };

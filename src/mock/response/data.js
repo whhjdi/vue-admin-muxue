@@ -17,13 +17,15 @@ export const getFolderList = () => {
     "id|+1": 1,
     folder_id: 0,
     "name|1": "@word",
-    "create_time ": "@datetime"
+    "create_time ": "@datetime",
+    expand: "@Boolean"
   };
   const temp2 = {
     "id|+1": 4,
     "folder_id|+1": 1,
     "name|1": "@word",
-    "create_time ": "@datetime"
+    "create_time ": "@datetime",
+    expand: "@Boolean"
   };
   const arr = [];
   for (let i = 0; i < 3; i++) {
