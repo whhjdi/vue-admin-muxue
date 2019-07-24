@@ -93,3 +93,19 @@ export const getAccessRoutes = (routesMap, rules) => {
     }
   });
 };
+
+export const getOpenArrByName = (name, routerList) => {
+  let arr = [];
+  routerList.some(item => {
+    if (item.name === name) {
+      arr.push(item.name);
+      return true;
+    }
+    if (item.children && item.children.length) {
+      let childArr = getOpenArrByName(item.children);
+      if (childArr.length) {
+        arr = arr.concat(childArr);
+      }
+    }
+  });
+};

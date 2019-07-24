@@ -6,6 +6,7 @@
       theme="dark"
       v-show="!collapsed"
       @on-select="handleSelect"
+      ref="menu"
     >
       <template v-for="(item, index) in list">
         <re-side-submenu
@@ -13,11 +14,11 @@
           :parent="item"
           :index="index"
           :key="`menu_item_${index}`"
-          >{{ item.title }}</re-side-submenu
+          >{{ item.meta.title }}</re-side-submenu
         >
-        <menu-item v-else :name="item.title" :key="`menu_item_${index}`">
-          <Icon :type="item.icon" size="20" class="my-menu-item-icon" />
-          {{ item.title }}
+        <menu-item v-else :name="item.meta.title" :key="`menu_item_${index}`">
+          <Icon :type="item.meta.icon" size="20" class="my-menu-item-icon" />
+          {{ item.meta.title }}
         </menu-item>
       </template>
     </Menu>
@@ -34,12 +35,12 @@
           v-else
           :key="`Tooltip_${index}`"
           transfer
-          :content="item.title"
+          :content="item.meta.title"
           :style="{ display: 'block', textAlign: 'center' }"
           placement="right"
         >
-          <span class="my-drop-menu" @click="handleClick(item.title)">
-            <Icon :type="item.icon" size="20" />
+          <span class="my-drop-menu" @click="handleClick(item.meta.title)">
+            <Icon :type="item.meta.icon" size="20" />
           </span>
         </Tooltip>
       </template>
@@ -50,6 +51,8 @@
 <script>
 import ReSideSubmenu from "./ReSideSubmenu";
 import ReDropdown from "./ReDropdown";
+import { mapState } from "vuex";
+import { getOpenArrByName } from "@/utils/util";
 export default {
   name: "SideMenu",
   components: {
@@ -66,12 +69,29 @@ export default {
       default: () => []
     }
   },
+  watch: {
+    // openNames() {
+    //   this.$nextTick(() => {
+    //     this.$refs.menu.handleOpen();
+    //   });
+    // }
+  },
+  computed: {
+    ...mapState({
+      routers: state => state.router.routers
+    }),
+    openNames() {
+      return getOpenArrByName(this.$route.name, this.routers);
+    }
+  },
   methods: {
     handleSelect(name) {
       console.log(name);
+      this.$router.push({ name });
     },
     handleClick(name) {
       console.log(name);
+      this.$router.push({ name });
     }
   }
 };

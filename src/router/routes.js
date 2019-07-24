@@ -5,33 +5,27 @@ export const routesMap = [
     name: "Home",
     component: MyLayout,
     meta: {
-      title: "首页"
+      title: "首页",
+      icon: "md-home"
     }
   },
   {
     path: "/components",
     name: "Components",
     component: MyLayout,
+    meta: {
+      title: "组件",
+      icon: "md-ionitron"
+    },
     children: [
-      {
-        path: "access_admin",
-        name: "Access",
-        component: () =>
-          import(
-            /* webpackChunkName: "Access" */ "@/components/HelloWorld.vue"
-          ),
-        meta: {
-          title: "Access",
-          access: ["admin"]
-        }
-      },
       {
         path: "table",
         name: "Table",
         component: () =>
           import(/* webpackChunkName: "Table" */ "../views/TablePage.vue"),
         meta: {
-          title: "Table"
+          title: "表格",
+          icon: "ios-barcode"
         }
       },
       {
@@ -40,7 +34,8 @@ export const routesMap = [
         component: () =>
           import(/* webpackChunkName: "Tree" */ "../views/TreePage.vue"),
         meta: {
-          title: "Tree"
+          title: "树",
+          icon: "ios-game-controller-a"
         }
       },
       {
@@ -51,7 +46,8 @@ export const routesMap = [
             /* webpackChunkName: "SplitPane" */ "../views/SplitPanePage.vue"
           ),
         meta: {
-          title: "SplitPane"
+          title: "split-pane",
+          icon: "ios-heart"
         }
       },
       {
@@ -60,7 +56,8 @@ export const routesMap = [
         component: () =>
           import(/* webpackChunkName: "MenuPage" */ "../views/MenuPage.vue"),
         meta: {
-          title: "MenuPage"
+          title: "菜单组件",
+          icon: "md-grid"
         }
       }
     ]
@@ -79,7 +76,7 @@ export const routes = [
   },
   {
     path: "/about",
-    name: "about",
+    name: "About",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
     meta: {
@@ -88,7 +85,6 @@ export const routes = [
   },
   {
     path: "*",
-    name: "404",
     component: () => import(/* webpackChunkName: "404" */ "../views/404.vue"),
     meta: {
       title: "404"

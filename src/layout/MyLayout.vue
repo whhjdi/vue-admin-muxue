@@ -1,7 +1,12 @@
 <template>
   <Layout class="my-layout">
-    <Sider v-model="collapsed" collapsible breakpoint="sm">
-      <side-menu :collapsed="collapsed" :list="list">
+    <Sider
+      v-model="collapsed"
+      collapsible
+      breakpoint="sm"
+      class="my-sider-wrapper"
+    >
+      <side-menu :collapsed="collapsed" :list="routers">
         <div class="logo">
           <img src="../assets/images/logo.png" class="logo-img" />
           <span v-if="!collapsed" class="logo-name">沐雪</span>
@@ -9,9 +14,31 @@
       </side-menu>
     </Sider>
     <Layout>
-      <Header class="my-layout-header">2</Header>
+      <Header class="my-layout-header" :style="{ background: '#fff' }"
+        >Hello</Header
+      >
       <Content class="my-content-wrapper">
-        <router-view></router-view>
+        <div class="tabs-wrapper">
+          <Tabs
+            type="card"
+            closable
+            :animated="false"
+            :value="$route.name"
+            @on-click="handleTabClick"
+          >
+            <TabPane
+              :label="item.meta.title"
+              :name="item.name"
+              v-for="(item, index) in tabList"
+              :key="`tab_${index}`"
+            ></TabPane>
+          </Tabs>
+          <div class="view-wrapper">
+            <Card>
+              <router-view></router-view>
+            </Card>
+          </div>
+        </div>
       </Content>
       <Footer>4</Footer>
     </Layout>
@@ -20,6 +47,7 @@
 
 <script>
 import SideMenu from "@/components/SideMenu";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "MyLayout",
   components: {
@@ -27,59 +55,88 @@ export default {
   },
   data() {
     return {
-      collapsed: true,
-      list: [
-        { title: "首页", icon: "md-home" },
-        {
-          title: "组件",
-          icon: "md-ionitron",
-          children: [
-            {
-              title: "基础组件",
-              icon: "ios-leaf",
-              children: [
-                {
-                  title: "按钮",
-                  icon: "ios-archive"
-                },
-                {
-                  title: "表格",
-                  icon: "ios-barcode"
-                },
-                {
-                  title: "树",
-                  icon: "ios-game-controller-a"
-                }
-              ]
-            },
-            {
-              title: "其他组件",
-              icon: "md-magnet",
-              children: [
-                {
-                  title: "split-pane",
-                  icon: "ios-heart"
-                },
-                {
-                  title: "test",
-                  icon: "ios-heart"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      collapsed: false
+      // list: [
+      //   { title: "首页", icon: "md-home" },
+      //   {
+      //     title: "组件",
+      //     icon: "md-ionitron",
+      //     children: [
+      //       {
+      //         title: "基础组件",
+      //         icon: "ios-leaf",
+      //         children: [
+      //           {
+      //             title: "按钮",
+      //             icon: "ios-archive"
+      //           },
+      //           {
+      //             title: "表格",
+      //             icon: "ios-barcode"
+      //           },
+      //           {
+      //             title: "树",
+      //             icon: "ios-game-controller-a"
+      //           }
+      //         ]
+      //       },
+      //       {
+      //         title: "其他组件",
+      //         icon: "md-magnet",
+      //         children: [
+      //           {
+      //             title: "split-pane",
+      //             icon: "ios-heart"
+      //           },
+      //           {
+      //             title: "test",
+      //             icon: "ios-heart"
+      //           }
+      //         ]
+      //       }
+      //     ]
+      //   }
+      // ]
     };
   },
-  methods: {}
+  watch: {
+    $route(newRouter) {
+      this.UPDATE_ROUTER(newRouter);
+    }
+  },
+  computed: {
+    ...mapState({
+      tabList: state => state.tabs.tabList,
+      routers: state =>
+        state.router.routers.filter(item => {
+          return (
+            item.path !== "*" && item.name !== "Login" && item.name !== "About"
+          );
+        })
+    })
+  },
+  methods: {
+    ...mapMutations(["UPDATE_ROUTER"]),
+    handleTabClick(index) {
+      this.$router.push({ name: this.tabList[index].name });
+    }
+  }
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .my-layout {
   height: 100%;
+  .my-sider-wrapper {
+    overflow: hidden;
+    height: 100%;
+    .ivu-layout-sider-children {
+      overflow-y: scroll;
+      // margin-right: -10px;
+      // padding-right: 10px;
+    }
+  }
   &-header {
-    background: #fff;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   }
   .logo {

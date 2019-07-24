@@ -1,13 +1,13 @@
 <template>
-  <Dropdown placement="right-start" @on-click="handleDropClick">
+  <Dropdown placement="right-start" @on-click="handleDropClick" transfer>
     <span class="my-drop-menu" :style="dropmenuStyle">
       <Icon
-        :type="parent.icon"
+        :type="parent.meta.icon"
         :size="20"
         :color="iconColor"
         :style="{ paddingRight: showTitle ? '5px' : '0' }"
       />
-      <span v-if="showTitle">{{ parent.title }}</span>
+      <span v-if="showTitle">{{ parent.meta.title }}</span>
     </span>
     <DropdownMenu slot="list">
       <template v-for="(item, i) in parent.children">
@@ -22,8 +22,8 @@
         <DropdownItem
           v-else
           :key="`Dropdown_${index}_${i}`"
-          :name="item.title"
-          >{{ item.title }}</DropdownItem
+          :name="item.name"
+          >{{ item.meta.title }}</DropdownItem
         >
       </template>
     </DropdownMenu>
@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .my-drop-menu {
   padding: 5px 0;
 }
