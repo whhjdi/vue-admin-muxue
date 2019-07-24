@@ -5,15 +5,16 @@ import getters from "./getters";
 import mutations from "./mutations";
 import actions from "./actions";
 import user from "./modules/user";
-import { saveToLocal } from "@/plugins/saveToLocal";
+import router from "./modules/router";
+// import { saveToLocal } from "@/plugins/saveToLocal";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  strict: process.env.NDOE_ENV === "production" ? false : true,
+  strict: false,
   state,
   getters,
   mutations,
   actions,
-  modules: { user },
-  plugins: [saveToLocal]
+  modules: { user, router }
+  // plugins: [saveToLocal]
 });

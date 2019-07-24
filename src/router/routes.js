@@ -1,9 +1,8 @@
 import MyLayout from "@/layout/MyLayout";
-const routes = [
+export const routesMap = [
   {
-    path: "/",
-    alias: "/home",
-    name: "home",
+    path: "/home",
+    name: "Home",
     component: MyLayout,
     meta: {
       title: "首页"
@@ -11,9 +10,21 @@ const routes = [
   },
   {
     path: "/components",
-    name: "components",
+    name: "Components",
     component: MyLayout,
     children: [
+      {
+        path: "access_admin",
+        name: "Access",
+        component: () =>
+          import(
+            /* webpackChunkName: "Access" */ "@/components/HelloWorld.vue"
+          ),
+        meta: {
+          title: "Access",
+          access: ["admin"]
+        }
+      },
       {
         path: "table",
         name: "Table",
@@ -42,17 +53,28 @@ const routes = [
         meta: {
           title: "SplitPane"
         }
+      },
+      {
+        path: "/menu-page",
+        name: "MenuPage",
+        component: () =>
+          import(/* webpackChunkName: "MenuPage" */ "../views/MenuPage.vue"),
+        meta: {
+          title: "MenuPage"
+        }
       }
     ]
-  },
+  }
+];
 
+export const routes = [
   {
-    path: "/menu-page",
-    name: "MenuPage",
+    path: "/login",
+    name: "Login",
     component: () =>
-      import(/* webpackChunkName: "MenuPage" */ "../views/MenuPage.vue"),
+      import(/* webpackChunkName: "about" */ "../views/Login.vue"),
     meta: {
-      title: "MenuPage"
+      title: "登录"
     }
   },
   {
@@ -63,7 +85,13 @@ const routes = [
     meta: {
       title: "关于"
     }
+  },
+  {
+    path: "*",
+    name: "404",
+    component: () => import(/* webpackChunkName: "404" */ "../views/404.vue"),
+    meta: {
+      title: "404"
+    }
   }
 ];
-
-export default routes;

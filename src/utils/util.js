@@ -1,8 +1,15 @@
 import clonedeep from "clonedeep";
+import Cookies from "js-cookie";
+
 export const setTitle = title => {
   window.document.title = title || "vue-admin-muxue";
 };
-
+export const setToken = (token, tokenName = "token") => {
+  Cookies.set(tokenName, token);
+};
+export const getToken = (tokenName = "token") => {
+  return Cookies.get(tokenName);
+};
 export const putFileToFolder = (folderList, fileList) => {
   const folderListCloned = clonedeep(folderList);
   const fileListCloned = clonedeep(fileList);
@@ -71,5 +78,18 @@ export const expandFolder = (folderTree, id) => {
       }
     }
     return item;
+  });
+};
+
+export const getAccessRoutes = (routesMap, rules) => {
+  return routesMap.filter(item => {
+    if (rules[item.name]) {
+      if (item.children) {
+        item.children = getAccessRoutes(item.children, rules);
+      }
+      return true;
+    } else {
+      return false;
+    }
   });
 };
