@@ -1,10 +1,10 @@
 const path = require("path");
 const resolve = dir => path.join(__dirname, dir);
 
-const publicPath = process.env.NODE_ENV === "production" ? "/dist" : "/";
+// const publicPath = process.env.NODE_ENV === "production" ? "/dist" : "/";
 
 module.exports = {
-  publicPath,
+  publicPath: "/",
   chainWebpack: config => {
     config.resolve.alias.set("@", resolve("src"));
   },
