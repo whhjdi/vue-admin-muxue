@@ -99,7 +99,6 @@ export default {
       const arr = putFileToFolder(this.folderList, this.fileList);
       const arr2 = putFolderToTree(arr);
       this.treeList = arr2;
-      console.log("treeList", this.treeList);
     },
 
     handleDropItemClick(data, name) {

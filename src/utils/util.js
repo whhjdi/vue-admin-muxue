@@ -109,3 +109,75 @@ export const getOpenArrByName = (name, routerList) => {
     }
   });
 };
+
+export const doCustomTimes = (times, callback) => {
+  let i = -1;
+  while (++i < times) {
+    callback(i);
+  }
+};
+
+//判断tabList中的路由是否已经存在
+
+export const routeHasExist = (list, item) => {
+  let len = list.length;
+  let result = false;
+  doCustomTimes(len, index => {
+    if (routeEqual(list[index], item)) {
+      result = true;
+    }
+  });
+  return result;
+};
+
+const routeEqual = (route1, route2) => {
+  const params1 = route1.parmas || {};
+  const params2 = route2.parmas || {};
+  const query1 = route1.parmas || {};
+  const query2 = route2.parmas || {};
+
+  return (
+    route1.name === route2.name &&
+    objEqual(params1, params2) &&
+    objEqual(query1, query2)
+  );
+};
+
+const objEqual = (obj1, obj2) => {
+  const keyArr1 = Object.keys(obj1);
+  const keyArr2 = Object.keys(obj2);
+  if (!keyArr1.length === keyArr2.length) return false;
+  else if (keyArr1.length === 0 && keyArr2.length === 0) return true;
+  else {
+    return !keyArr1.some(key => {
+      return obj1[key] !== obj2[key];
+    });
+  }
+};
+
+//从route中获取tabName
+export const getTabNameFromRoute = route => {
+  const { name, parmas, query } = route;
+  let result = name;
+  if (parmas && Object.keys(parmas).length) {
+    result += ":" + getKeyValArr(parmas).join("_");
+  }
+  if (query && Object.keys(query).length) {
+    result += "&" + getKeyValArr(query).join("_");
+  }
+
+  return result;
+};
+
+const getKeyValArr = obj => {
+  let arr = [];
+  Object.entries(obj)
+    .sort((a, b) => {
+      return a[0] - b[0];
+    })
+    .forEach(([_key, _val]) => {
+      arr.push(_key, _val);
+    });
+
+  return arr;
+};

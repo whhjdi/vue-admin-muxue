@@ -10,13 +10,25 @@
     >
       <template v-for="(item, index) in list">
         <re-side-submenu
-          v-if="item.children"
+          v-if="item.children && item.name !== 'Page'"
           :parent="item"
           :index="index"
           :key="`menu_item_${index}`"
           >{{ item.meta.title }}</re-side-submenu
         >
-        <menu-item v-else :name="item.meta.title" :key="`menu_item_${index}`">
+        <menu-item
+          v-else-if="item.name !== 'Page'"
+          :name="item.meta.title"
+          :key="`menu_item_${index}`"
+        >
+          <Icon :type="item.meta.icon" size="20" class="my-menu-item-icon" />
+          {{ item.meta.title }}
+        </menu-item>
+        <menu-item
+          v-else
+          :name="item.children[0].name"
+          :key="`menu_item_${index}`"
+        >
           <Icon :type="item.meta.icon" size="20" class="my-menu-item-icon" />
           {{ item.meta.title }}
         </menu-item>
@@ -86,13 +98,14 @@ export default {
   },
   methods: {
     handleSelect(name) {
-      console.log(name);
       this.$router.push({ name });
     },
     handleClick(name) {
-      console.log(name);
       this.$router.push({ name });
     }
+  },
+  mounted() {
+    console.log(this.list);
   }
 };
 </script>

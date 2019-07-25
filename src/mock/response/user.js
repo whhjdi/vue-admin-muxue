@@ -21,6 +21,7 @@ export const authorization = () => {
       token: "mytoken",
       rules: {
         page: {
+          Page: true,
           Home: true,
           Components: true,
           Tree: true,

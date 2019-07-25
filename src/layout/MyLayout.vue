@@ -21,14 +21,15 @@
         <div class="tabs-wrapper">
           <Tabs
             type="card"
-            closable
             :animated="false"
-            :value="$route.name"
+            :value="getTabNameFromRoute($route)"
+            closable
             @on-click="handleTabClick"
           >
             <TabPane
               :label="item.meta.title"
               :name="item.name"
+              :closable="item.name !== 'Home'"
               v-for="(item, index) in tabList"
               :key="`tab_${index}`"
             ></TabPane>
@@ -40,7 +41,7 @@
           </div>
         </div>
       </Content>
-      <Footer>4</Footer>
+      <Footer>@copyright 沐雪 2019</Footer>
     </Layout>
   </Layout>
 </template>
@@ -48,6 +49,7 @@
 <script>
 import SideMenu from "@/components/SideMenu";
 import { mapState, mapMutations } from "vuex";
+import { getTabNameFromRoute } from "@/utils/util";
 export default {
   name: "MyLayout",
   components: {
@@ -55,48 +57,8 @@ export default {
   },
   data() {
     return {
-      collapsed: false
-      // list: [
-      //   { title: "首页", icon: "md-home" },
-      //   {
-      //     title: "组件",
-      //     icon: "md-ionitron",
-      //     children: [
-      //       {
-      //         title: "基础组件",
-      //         icon: "ios-leaf",
-      //         children: [
-      //           {
-      //             title: "按钮",
-      //             icon: "ios-archive"
-      //           },
-      //           {
-      //             title: "表格",
-      //             icon: "ios-barcode"
-      //           },
-      //           {
-      //             title: "树",
-      //             icon: "ios-game-controller-a"
-      //           }
-      //         ]
-      //       },
-      //       {
-      //         title: "其他组件",
-      //         icon: "md-magnet",
-      //         children: [
-      //           {
-      //             title: "split-pane",
-      //             icon: "ios-heart"
-      //           },
-      //           {
-      //             title: "test",
-      //             icon: "ios-heart"
-      //           }
-      //         ]
-      //       }
-      //     ]
-      //   }
-      // ]
+      collapsed: false,
+      getTabNameFromRoute
     };
   },
   watch: {
@@ -109,16 +71,14 @@ export default {
       tabList: state => state.tabs.tabList,
       routers: state =>
         state.router.routers.filter(item => {
-          return (
-            item.path !== "*" && item.name !== "Login" && item.name !== "About"
-          );
+          return item.path !== "*" && item.name !== "Login";
         })
     })
   },
   methods: {
     ...mapMutations(["UPDATE_ROUTER"]),
-    handleTabClick(index) {
-      this.$router.push({ name: this.tabList[index].name });
+    handleTabClick() {
+      // this.$router.push({ name: this.tabList[index][name] });
     }
   }
 };

@@ -1,14 +1,11 @@
+import { routeHasExist } from "@/utils/util";
 const state = {
   tabList: []
 };
 const getters = {};
 const mutations = {
   UPDATE_ROUTER(state, route) {
-    if (
-      !state.tabList.find(item => {
-        return item.name === route.name;
-      })
-    ) {
+    if (!routeHasExist(state.tabList, route)) {
       state.tabList.push(route);
     }
   }

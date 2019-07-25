@@ -1,13 +1,26 @@
 import MyLayout from "@/layout/MyLayout";
 export const routesMap = [
   {
-    path: "/home",
-    name: "Home",
+    path: "/",
+    name: "Page",
+    redirect: "Home",
     component: MyLayout,
     meta: {
       title: "首页",
       icon: "md-home"
-    }
+    },
+    children: [
+      {
+        path: "home",
+        name: "Home",
+        component: () =>
+          import(/* webpackChunkName: "Home" */ "../views/Home.vue"),
+        meta: {
+          title: "首页",
+          icon: "md-ionitron"
+        }
+      }
+    ]
   },
   {
     path: "/components",
