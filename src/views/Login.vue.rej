@@ -1,6 +1,0 @@
-diff a/src/views/Login.vue b/src/views/Login.vue	(rejected hunks)
-@@ -23,2 +23 @@ export default {
--<style lang="scss" scoped>
--</style>
-\ No newline at end of file
-+<style lang="scss" scoped></style>

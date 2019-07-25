@@ -7,6 +7,8 @@
       v-show="!collapsed"
       @on-select="handleSelect"
       ref="menu"
+      :active-name="$route.name"
+      :open-names="openNames"
     >
       <template v-for="(item, index) in list">
         <re-side-submenu
@@ -82,11 +84,11 @@ export default {
     }
   },
   watch: {
-    // openNames() {
-    //   this.$nextTick(() => {
-    //     this.$refs.menu.handleOpen();
-    //   });
-    // }
+    openNames() {
+      this.$nextTick(() => {
+        this.$refs.menu.updateOpened();
+      });
+    }
   },
   computed: {
     ...mapState({
@@ -103,14 +105,11 @@ export default {
     handleClick(name) {
       this.$router.push({ name });
     }
-  },
-  mounted() {
-    console.log(this.list);
   }
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .my-side-menu {
   width: 100%;
   .my-drop-menu {

@@ -27,9 +27,8 @@
             @on-click="handleTabClick"
           >
             <TabPane
-              :label="item.meta.title"
+              :label="labelRender(item)"
               :name="item.name"
-              :closable="item.name !== 'Home'"
               v-for="(item, index) in tabList"
               :key="`tab_${index}`"
             ></TabPane>
@@ -48,8 +47,8 @@
 
 <script>
 import SideMenu from "@/components/SideMenu";
-import { mapState, mapMutations } from "vuex";
-import { getTabNameFromRoute } from "@/utils/util";
+import { mapState, mapActions } from "vuex";
+import { getTabNameFromRoute, getRouteNameFromTabList } from "@/utils/util";
 export default {
   name: "MyLayout",
   components: {
@@ -61,24 +60,51 @@ export default {
       getTabNameFromRoute
     };
   },
-  watch: {
-    $route(newRouter) {
-      this.UPDATE_ROUTER(newRouter);
-    }
-  },
+
   computed: {
     ...mapState({
       tabList: state => state.tabs.tabList,
       routers: state =>
         state.router.routers.filter(item => {
-          return item.path !== "*" && item.name !== "Login";
+          return (
+            item.path !== "*" && item.name !== "Login" && item.name !== "About"
+          );
         })
     })
   },
   methods: {
-    ...mapMutations(["UPDATE_ROUTER"]),
-    handleTabClick() {
-      // this.$router.push({ name: this.tabList[index][name] });
+    ...mapActions(["handleRemove"]),
+    handleTabClick(id) {
+      this.$router.push(getRouteNameFromTabList(id));
+    },
+    handleTabRemove(id, e) {
+      e.stopPropagation();
+      this.handleRemove({ id, $route: this.$route }).then(nextRoute => {
+        this.$router.push(nextRoute);
+      });
+    },
+    labelRender(item) {
+      console.log(item.meta.closable);
+
+      return () => {
+        return (
+          <div>
+            <span>{item.meta.title}</span>
+            {item.meta.closable ? (
+              <Icon
+                type="md-close-circle"
+                style="line-height:12px;margin-left:6px;margin-right:0"
+                nativeOn-click={this.handleTabRemove.bind(
+                  this,
+                  getTabNameFromRoute(item)
+                )}
+              />
+            ) : (
+              ""
+            )}
+          </div>
+        );
+      };
     }
   }
 };

@@ -17,7 +17,8 @@ export const routesMap = [
           import(/* webpackChunkName: "Home" */ "../views/Home.vue"),
         meta: {
           title: "首页",
-          icon: "md-ionitron"
+          icon: "md-ionitron",
+          closable: false
         }
       }
     ]
@@ -38,7 +39,8 @@ export const routesMap = [
           import(/* webpackChunkName: "Table" */ "../views/TablePage.vue"),
         meta: {
           title: "表格",
-          icon: "ios-barcode"
+          icon: "ios-barcode",
+          closable: true
         }
       },
       {
@@ -48,7 +50,8 @@ export const routesMap = [
           import(/* webpackChunkName: "Tree" */ "../views/TreePage.vue"),
         meta: {
           title: "树",
-          icon: "ios-game-controller-a"
+          icon: "ios-game-controller-a",
+          closable: true
         }
       },
       {
@@ -60,7 +63,8 @@ export const routesMap = [
           ),
         meta: {
           title: "split-pane",
-          icon: "ios-heart"
+          icon: "ios-heart",
+          closable: true
         }
       },
       {
@@ -70,7 +74,8 @@ export const routesMap = [
           import(/* webpackChunkName: "MenuPage" */ "../views/MenuPage.vue"),
         meta: {
           title: "菜单组件",
-          icon: "md-grid"
+          icon: "md-grid",
+          closable: true
         }
       }
     ]

@@ -94,6 +94,7 @@ export const getAccessRoutes = (routesMap, rules) => {
   });
 };
 
+//获取openNames
 export const getOpenArrByName = (name, routerList) => {
   let arr = [];
   routerList.some(item => {
@@ -102,12 +103,13 @@ export const getOpenArrByName = (name, routerList) => {
       return true;
     }
     if (item.children && item.children.length) {
-      let childArr = getOpenArrByName(item.children);
+      let childArr = getOpenArrByName(name, item.children);
       if (childArr.length) {
-        arr = arr.concat(childArr);
+        arr = arr.concat(item.name, childArr);
       }
     }
   });
+  return arr;
 };
 
 export const doCustomTimes = (times, callback) => {
@@ -130,7 +132,7 @@ export const routeHasExist = (list, item) => {
   return result;
 };
 
-const routeEqual = (route1, route2) => {
+export const routeEqual = (route1, route2) => {
   const params1 = route1.parmas || {};
   const params2 = route2.parmas || {};
   const query1 = route1.parmas || {};
@@ -143,7 +145,7 @@ const routeEqual = (route1, route2) => {
   );
 };
 
-const objEqual = (obj1, obj2) => {
+export const objEqual = (obj1, obj2) => {
   const keyArr1 = Object.keys(obj1);
   const keyArr2 = Object.keys(obj2);
   if (!keyArr1.length === keyArr2.length) return false;
@@ -180,4 +182,43 @@ const getKeyValArr = obj => {
     });
 
   return arr;
+};
+
+//获取route对象通过id
+export const getRouteNameFromTabList = id => {
+  let result = {};
+  if (id.includes("&", "&")) {
+    result.query = getObjBySplit(id);
+    id = id.split("&")[0];
+  }
+
+  if (id.includes(":")) {
+    result.params = getObjBySplit(id, ":");
+    id = id.split(":")[0];
+  }
+  result.name = id;
+  return result;
+};
+
+const getObjBySplit = (id, splitStr) => {
+  let arr = id.split(splitStr);
+  let str = arr[arr.length - 1];
+  let keyValArr = str.split("_");
+  let obj = {};
+  let i = 0;
+  let len = keyValArr.length;
+  while (i < len) {
+    obj[keyValArr[i]] = keyValArr[i + 1];
+    i += 2;
+  }
+};
+
+//存储路由信息
+
+export const localSave = (name, value) => {
+  return localStorage.setItem(name, value);
+};
+
+export const localRead = name => {
+  return localStorage.getItem(name);
 };

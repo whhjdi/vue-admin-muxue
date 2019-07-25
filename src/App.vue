@@ -5,9 +5,18 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "app",
-  components: {}
+  components: {},
+  watch: {
+    $route(newRouter) {
+      this.UPDATE_ROUTER(newRouter);
+    }
+  },
+  methods: {
+    ...mapMutations(["UPDATE_ROUTER"])
+  }
 };
 </script>
 
