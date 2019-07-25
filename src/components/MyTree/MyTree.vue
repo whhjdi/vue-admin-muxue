@@ -137,8 +137,6 @@ export default {
 
       if (type === "folder") {
         const newFolderList = this.updateList(clonedeep(this.folderList), id);
-        console.log(newFolderList);
-
         this.$emit("update:folderList", newFolderList);
       } else {
         const newFileList = this.updateList(clonedeep(this.fileList), id);

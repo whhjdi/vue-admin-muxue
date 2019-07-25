@@ -18,8 +18,6 @@ router.beforeEach((to, from, next) => {
       store.dispatch("handleAuthorization").then(rules => {
         store.dispatch("concatRoutes", rules).then(newRoutes => {
           router.addRoutes(newRoutes);
-          console.log({ ...to });
-
           next({ ...to, replace: true });
         });
       });

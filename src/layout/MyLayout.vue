@@ -1,11 +1,6 @@
 <template>
   <Layout class="my-layout">
-    <Sider
-      v-model="collapsed"
-      collapsible
-      breakpoint="sm"
-      class="my-sider-wrapper"
-    >
+    <Sider v-model="collapsed" collapsible breakpoint="sm" class="my-sider-wrapper">
       <side-menu :collapsed="collapsed" :list="routers">
         <div class="logo">
           <img src="../assets/images/logo.png" class="logo-img" />
@@ -14,9 +9,7 @@
       </side-menu>
     </Sider>
     <Layout>
-      <Header class="my-layout-header" :style="{ background: '#fff' }"
-        >Hello</Header
-      >
+      <Header class="my-layout-header" :style="{ background: '#fff' }">Hello</Header>
       <Content class="my-content-wrapper">
         <div class="tabs-wrapper">
           <Tabs
@@ -84,8 +77,6 @@ export default {
       });
     },
     labelRender(item) {
-      console.log(item.meta.closable);
-
       return () => {
         return (
           <div>
