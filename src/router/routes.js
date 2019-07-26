@@ -74,6 +74,39 @@ export const routesMap = [
             }
           }
         ]
+      },
+      {
+        path: "/zui",
+        name: "Zui",
+        component: { render: h => h("router-view") },
+        meta: {
+          title: "ZUI",
+          icon: "md-ionitron"
+        },
+        children: [
+          {
+            path: "ZButton",
+            name: "ZButton",
+            component: () =>
+              import(
+                /* webpackChunkName: "ZButton" */ "../views/ButtonPage.vue"
+              ),
+            meta: {
+              title: "按钮",
+              icon: "md-ionitron"
+            }
+          },
+          {
+            path: "ZInput",
+            name: "ZInput",
+            component: () =>
+              import(/* webpackChunkName: "ZInput" */ "../views/InputPage.vue"),
+            meta: {
+              title: "输入框",
+              icon: "md-ionitron"
+            }
+          }
+        ]
       }
     ]
   }
