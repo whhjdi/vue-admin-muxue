@@ -11,14 +11,16 @@
     <Layout>
       <Header class="my-layout-header" :style="{ background: '#fff' }">
         <div class="my-layout-header-container">
-          <div class="breadcrumn-wrapper">
-            <Breadcrumb :style="{float:'left'}">
-              <template v-for="(item,index) in $route.matched">
-                <BreadcrumbItem :to="$route.name" :key="`bread_${index}`" v-if="item.name!=='Page'">
-                  <Icon :type="item.meta.icon" size="16" :style="{lineHeight: '7px'}"></Icon>
-                  <span>{{item.name}}</span>
-                </BreadcrumbItem>
-              </template>
+          <div class="breadcrumn-wrapper" :style="{float:'left'}">
+            <Breadcrumb>
+              <BreadcrumbItem
+                v-for="(item,index) in list"
+                :to="{path:$route.path}"
+                :key="`bread_${index}`"
+              >
+                <Icon :type="item.meta.icon" size="16" :style="{lineHeight: '7px'}"></Icon>
+                <span>{{item.meta.title}}</span>
+              </BreadcrumbItem>
             </Breadcrumb>
           </div>
 
@@ -59,7 +61,7 @@
           </div>
         </div>
       </Content>
-      <Footer>@copyright 沐雪 2019</Footer>
+      <Footer class="my-footer-wrapper">@copyright 沐雪 2019</Footer>
     </Layout>
   </Layout>
 </template>
@@ -84,7 +86,16 @@ export default {
     ...mapState({
       tabList: state => state.tabs.tabList,
       routers: state => state.router.routers[0].children
-    })
+    }),
+    list() {
+      let arr = [];
+      this.$route.matched.forEach(item => {
+        if (item.path) {
+          arr.push(item);
+        }
+      });
+      return arr;
+    }
   },
   methods: {
     ...mapActions(["handleRemove", "logout"]),
@@ -144,6 +155,9 @@ export default {
       // padding-right: 10px;
     }
   }
+  .ivu-layout-header {
+    padding: 0 20px;
+  }
   &-header {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     &-container {
@@ -174,7 +188,12 @@ export default {
   }
 
   .my-content-wrapper {
-    padding: 18px;
+    padding: 20px;
+  }
+  .my-footer-wrapper {
+    background: #fff;
+    color: #000;
+    font-size: 14px;
   }
 }
 </style>

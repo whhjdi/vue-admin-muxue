@@ -31,7 +31,7 @@ export const routesMap = [
             component: () =>
               import(/* webpackChunkName: "Table" */ "../views/TablePage.vue"),
             meta: {
-              title: "表格",
+              title: "表格组件",
               icon: "ios-barcode",
               closable: true
             }
@@ -42,7 +42,7 @@ export const routesMap = [
             component: () =>
               import(/* webpackChunkName: "Tree" */ "../views/TreePage.vue"),
             meta: {
-              title: "树",
+              title: "树形组件",
               icon: "ios-game-controller-a",
               closable: true
             }
@@ -55,7 +55,7 @@ export const routesMap = [
                 /* webpackChunkName: "SplitPane" */ "../views/SplitPanePage.vue"
               ),
             meta: {
-              title: "split-pane",
+              title: "分割窗口",
               icon: "ios-heart",
               closable: true
             }

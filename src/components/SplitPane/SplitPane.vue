@@ -1,9 +1,6 @@
 <template>
   <div class="split-pane-wrapper" ref="splitPane">
-    <div
-      class="pane pane-left"
-      :style="{ width: leftOffsetPercent, paddingRight: padding }"
-    >
+    <div class="pane pane-left" :style="{ width: leftOffsetPercent, paddingRight: padding }">
       <slot name="left"></slot>
     </div>
 
@@ -13,10 +10,7 @@
       @mousedown="handleMousedown"
       @mouseup="handleMouseup"
     ></div>
-    <div
-      class="pane pane-right"
-      :style="{ left: leftOffsetPercent, paddingLeft: padding }"
-    >
+    <div class="pane pane-right" :style="{ left: leftOffsetPercent, paddingLeft: padding }">
       <slot name="right"></slot>
     </div>
   </div>
@@ -101,21 +95,24 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
+  color: white;
+  text-align: center;
+  font-size: 48px;
   .pane {
     height: 100%;
     position: absolute;
     top: 0;
     bottom: 0;
     &-left {
-      background: rgb(187, 125, 125);
+      background: rgb(222, 88, 88);
       left: 0;
     }
     &-right {
-      background: rgb(84, 134, 90);
+      background: rgb(56, 51, 111);
       right: 0;
     }
     &-button {
-      background: rgb(65, 14, 133);
+      background: rgb(215, 215, 215);
       z-index: 10;
       user-select: none;
       cursor: col-resize;
