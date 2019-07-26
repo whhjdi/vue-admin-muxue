@@ -67,11 +67,12 @@ export default {
                     on-input={this.handleInput.bind(this)}
                   ></i-input>
                 ) : (
-                  <span>{row[column.key]}</span>
+                  <span style="margin-right:10px">{row[column.key]}</span>
                 )}
 
                 <i-button
                   size="small"
+                  type="info"
                   on-click={this.handleEditClick.bind(this, {
                     row,
                     column,

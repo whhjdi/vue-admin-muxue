@@ -1,5 +1,5 @@
 <template>
-  <h1>404!</h1>
+  <h1>没错这就是404!</h1>
 </template>
 
 <script>

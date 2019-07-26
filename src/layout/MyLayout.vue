@@ -18,7 +18,7 @@
                 :to="{path:$route.path}"
                 :key="`bread_${index}`"
               >
-                <Icon :type="item.meta.icon" size="16" :style="{lineHeight: '7px'}"></Icon>
+                <Icon :type="item.meta.icon" size="16" :style="{verticalAlign:'-2px'}"></Icon>
                 <span>{{item.meta.title}}</span>
               </BreadcrumbItem>
             </Breadcrumb>
@@ -36,7 +36,7 @@
                 </DropdownItem>
                 <DropdownItem>
                   <a>
-                    <router-link to="About">关于</router-link>
+                    <router-link :to="{path:'/about'}">关于</router-link>
                   </a>
                 </DropdownItem>
                 <DropdownItem name="Logout">
@@ -199,8 +199,9 @@ export default {
   }
   .my-footer-wrapper {
     background: #fff;
-    color: #000;
+    color: #515a6e;
     font-size: 14px;
+    text-align: center;
   }
 }
 </style>
