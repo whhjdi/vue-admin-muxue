@@ -25,14 +25,23 @@
           </div>
 
           <div class="avatar">
-            <Dropdown @on-click="handleAvatarClick">
+            <Dropdown>
               <Badge dot>
                 <Avatar shape="circle" :src="require('../assets/images/avatar.jpeg')" />
                 <Icon type="ios-arrow-down"></Icon>
               </Badge>
               <DropdownMenu slot="list">
-                <DropdownItem name="About">关于</DropdownItem>
-                <DropdownItem name="Logout">退出登录</DropdownItem>
+                <DropdownItem name="About">
+                  <a href="//github.com/whhjdi/vue-admin-muxue" target="_blank">项目地址</a>
+                </DropdownItem>
+                <DropdownItem>
+                  <a>
+                    <router-link to="About">关于</router-link>
+                  </a>
+                </DropdownItem>
+                <DropdownItem name="Logout">
+                  <a @click="handleLogout">退出登录</a>
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </div>
@@ -109,7 +118,6 @@ export default {
       });
     },
     labelRender(item) {
-      console.log(item, 1);
       return () => {
         return (
           <div>
@@ -130,14 +138,10 @@ export default {
         );
       };
     },
-    handleAvatarClick(name) {
-      if (name === "About") {
-        this.$router.push({ name });
-      } else if (name === "Logout") {
-        this.logout().then(() => {
-          this.$router.push({ name: "Login" });
-        });
-      }
+    handleLogout() {
+      this.logout().then(() => {
+        this.$router.push({ name: "Login" });
+      });
     }
   }
 };
@@ -168,6 +172,9 @@ export default {
         line-height: 40px;
         img {
           width: 100%;
+        }
+        a {
+          color: #000;
         }
       }
     }

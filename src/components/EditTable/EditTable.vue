@@ -32,7 +32,9 @@ export default {
     handleEditClick({ row, column, index }) {
       if (this.edittingId === `${column.key}_${index}`) {
         const tableData = clonedeep(this.value);
-        tableData[index][column.key] = this.edittingContent;
+        if (this.edittingContent) {
+          tableData[index][column.key] = this.edittingContent;
+        }
         this.$emit("input", tableData);
         this.$emit("on-edit", {
           row,
@@ -47,7 +49,9 @@ export default {
       }
     },
     handleInput(val) {
-      this.edittingContent = val;
+      if (val) {
+        this.edittingContent = val;
+      }
     },
     initColumns() {
       const insideColumns = this.columns.map(item => {
@@ -58,6 +62,7 @@ export default {
               <div>
                 {isEditting ? (
                   <i-input
+                    size="small"
                     value={row[column.key]}
                     on-input={this.handleInput.bind(this)}
                   ></i-input>
@@ -66,6 +71,7 @@ export default {
                 )}
 
                 <i-button
+                  size="small"
                   on-click={this.handleEditClick.bind(this, {
                     row,
                     column,
