@@ -2,81 +2,78 @@ import MyLayout from "@/layout/MyLayout";
 export const routesMap = [
   {
     path: "/",
-    name: "Page",
     redirect: "home",
     component: MyLayout,
-    meta: {
-      title: "首页",
-      icon: "md-home"
-    },
     children: [
       {
-        path: "home",
+        path: "/home",
         name: "Home",
         component: () =>
           import(/* webpackChunkName: "Home" */ "../views/Home.vue"),
         meta: {
           title: "首页",
-          icon: "md-ionitron",
+          icon: "md-home",
           closable: false
         }
-      }
-    ]
-  },
-  {
-    path: "/components",
-    name: "Components",
-    component: MyLayout,
-    meta: {
-      title: "组件",
-      icon: "md-ionitron"
-    },
-    children: [
-      {
-        path: "table",
-        name: "Table",
-        component: () =>
-          import(/* webpackChunkName: "Table" */ "../views/TablePage.vue"),
-        meta: {
-          title: "表格",
-          icon: "ios-barcode",
-          closable: true
-        }
       },
       {
-        path: "tree",
-        name: "Tree",
-        component: () =>
-          import(/* webpackChunkName: "Tree" */ "../views/TreePage.vue"),
+        path: "/components",
+        name: "Components",
+        component: { render: h => h("router-view") },
         meta: {
-          title: "树",
-          icon: "ios-game-controller-a",
-          closable: true
-        }
-      },
-      {
-        path: "split-pane",
-        name: "SplitPane",
-        component: () =>
-          import(
-            /* webpackChunkName: "SplitPane" */ "../views/SplitPanePage.vue"
-          ),
-        meta: {
-          title: "split-pane",
-          icon: "ios-heart",
-          closable: true
-        }
-      },
-      {
-        path: "menu-page",
-        name: "MenuPage",
-        component: () =>
-          import(/* webpackChunkName: "MenuPage" */ "../views/MenuPage.vue"),
-        meta: {
-          title: "菜单组件",
-          icon: "md-grid",
-          closable: true
-        }
+          title: "组件",
+          icon: "md-ionitron"
+        },
+        children: [
+          {
+            path: "table",
+            name: "Table",
+            component: () =>
+              import(/* webpackChunkName: "Table" */ "../views/TablePage.vue"),
+            meta: {
+              title: "表格",
+              icon: "ios-barcode",
+              closable: true
+            }
+          },
+          {
+            path: "tree",
+            name: "Tree",
+            component: () =>
+              import(/* webpackChunkName: "Tree" */ "../views/TreePage.vue"),
+            meta: {
+              title: "树",
+              icon: "ios-game-controller-a",
+              closable: true
+            }
+          },
+          {
+            path: "split-pane",
+            name: "SplitPane",
+            component: () =>
+              import(
+                /* webpackChunkName: "SplitPane" */ "../views/SplitPanePage.vue"
+              ),
+            meta: {
+              title: "split-pane",
+              icon: "ios-heart",
+              closable: true
+            }
+          },
+          {
+            path: "menu-page",
+            name: "MenuPage",
+            component: () =>
+              import(
+                /* webpackChunkName: "MenuPage" */ "../views/MenuPage.vue"
+              ),
+            meta: {
+              title: "菜单组件",
+              icon: "md-grid",
+              closable: true
+            }
+          }
+        ]
       }
     ]
   }

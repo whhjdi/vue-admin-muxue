@@ -83,12 +83,7 @@ export default {
   computed: {
     ...mapState({
       tabList: state => state.tabs.tabList,
-      routers: state =>
-        state.router.routers.filter(item => {
-          return (
-            item.path !== "*" && item.name !== "Login" && item.name !== "About"
-          );
-        })
+      routers: state => state.router.routers[0].children
     })
   },
   methods: {

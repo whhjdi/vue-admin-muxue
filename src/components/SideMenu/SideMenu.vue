@@ -12,25 +12,12 @@
     >
       <template v-for="(item, index) in list">
         <re-side-submenu
-          v-if="item.children && item.name !== 'Page'"
+          v-if="item.children"
           :parent="item"
           :index="index"
           :key="`menu_item_${index}`"
-          >{{ item.meta.title }}</re-side-submenu
-        >
-        <menu-item
-          v-else-if="item.name !== 'Page'"
-          :name="item.meta.title"
-          :key="`menu_item_${index}`"
-        >
-          <Icon :type="item.meta.icon" size="20" class="my-menu-item-icon" />
-          {{ item.meta.title }}
-        </menu-item>
-        <menu-item
-          v-else
-          :name="item.children[0].name"
-          :key="`menu_item_${index}`"
-        >
+        >{{ item.meta.title }}</re-side-submenu>
+        <menu-item v-else :name="item.name" :key="`menu_item_${index}`">
           <Icon :type="item.meta.icon" size="20" class="my-menu-item-icon" />
           {{ item.meta.title }}
         </menu-item>
@@ -53,7 +40,7 @@
           :style="{ display: 'block', textAlign: 'center' }"
           placement="right"
         >
-          <span class="my-drop-menu" @click="handleClick(item.meta.title)">
+          <span class="my-drop-menu" @click="handleClick(item.name)">
             <Icon :type="item.meta.icon" size="20" />
           </span>
         </Tooltip>
@@ -92,7 +79,7 @@ export default {
   },
   computed: {
     ...mapState({
-      routers: state => state.router.routers
+      routers: state => state.router.routers[0].children
     }),
     openNames() {
       return getOpenArrByName(this.$route.name, this.routers);
