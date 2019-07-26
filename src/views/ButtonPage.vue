@@ -38,7 +38,7 @@
     </div>
     <div>
       <h1>加载中</h1>
-      <p>可以给任意按钮添加 click 时间，展现 loading 动画</p>
+      <p>可以给任意按钮添加 click 事件</p>
       <z-button size="small" :loading="loading1" @click="loading1=!loading1">点击</z-button>
       <z-button
         size="normal"
@@ -57,6 +57,13 @@ import ZButton from "@/components/ZButton";
 export default {
   components: {
     ZButton
+  },
+  data() {
+    return {
+      loading1: true,
+      loading2: true,
+      loading3: true
+    };
   }
 };
 </script>

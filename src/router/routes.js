@@ -81,7 +81,8 @@ export const routesMap = [
         component: { render: h => h("router-view") },
         meta: {
           title: "ZUI",
-          icon: "md-ionitron"
+          icon: "md-pizza",
+          closable: true
         },
         children: [
           {
@@ -93,7 +94,8 @@ export const routesMap = [
               ),
             meta: {
               title: "按钮",
-              icon: "md-ionitron"
+              icon: "ios-radio-button-on",
+              closable: true
             }
           },
           {
@@ -103,7 +105,19 @@ export const routesMap = [
               import(/* webpackChunkName: "ZInput" */ "../views/InputPage.vue"),
             meta: {
               title: "输入框",
-              icon: "md-ionitron"
+              icon: "md-link",
+              closable: true
+            }
+          },
+          {
+            path: "ZTabs",
+            name: "ZTabs",
+            component: () =>
+              import(/* webpackChunkName: "ZTabs" */ "../views/ZTabsPage.vue"),
+            meta: {
+              title: "tab导航",
+              icon: "ios-book",
+              closable: true
             }
           }
         ]

@@ -1,9 +1,7 @@
 
 <template>
   <button class="z-button" :class="[size,color,shape]" @click="$emit('click')">
-    <svg class="icon" :class="{loading}" aria-hidden="true" v-if="loading">
-      <use xlink:href="#icon-loading" />
-    </svg>
+    <span v-if="loading">加载中</span>
     <div v-else>
       <slot>默认</slot>
     </div>
@@ -81,17 +79,5 @@ export default {
 }
 .round {
   border-radius: @z-button-border-radius-round;
-}
-.loading {
-  padding: 0 0.5em;
-  animation: spin 2s infinite linear;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 </style>
