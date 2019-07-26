@@ -10,14 +10,31 @@
     </Sider>
     <Layout>
       <Header class="my-layout-header" :style="{ background: '#fff' }">
-        <Breadcrumb>
-          <template v-for="(item,index) in $route.matched">
-            <BreadcrumbItem :to="$route.name" :key="`bread_${index}`" v-if="item.name!=='Page'">
-              <Icon :type="item.meta.icon" size="16" :style="{lineHeight: '7px'}"></Icon>
-              <span>{{item.name}}</span>
-            </BreadcrumbItem>
-          </template>
-        </Breadcrumb>
+        <div class="my-layout-header-container">
+          <div class="breadcrumn-wrapper">
+            <Breadcrumb :style="{float:'left'}">
+              <template v-for="(item,index) in $route.matched">
+                <BreadcrumbItem :to="$route.name" :key="`bread_${index}`" v-if="item.name!=='Page'">
+                  <Icon :type="item.meta.icon" size="16" :style="{lineHeight: '7px'}"></Icon>
+                  <span>{{item.name}}</span>
+                </BreadcrumbItem>
+              </template>
+            </Breadcrumb>
+          </div>
+
+          <div class="avatar">
+            <Dropdown @on-click="handleAvatarClick">
+              <Badge dot>
+                <Avatar shape="circle" :src="require('../assets/images/avatar.jpeg')" />
+                <Icon type="ios-arrow-down"></Icon>
+              </Badge>
+              <DropdownMenu slot="list">
+                <DropdownItem name="About">关于</DropdownItem>
+                <DropdownItem name="Logout">退出登录</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+        </div>
       </Header>
       <Content class="my-content-wrapper">
         <div class="tabs-wrapper">
@@ -75,7 +92,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["handleRemove"]),
+    ...mapActions(["handleRemove", "logout"]),
     handleTabClick(id) {
       this.$router.push(getRouteNameFromTabList(id));
     },
@@ -90,9 +107,7 @@ export default {
       return () => {
         return (
           <div>
-            <span>
-              {item.meta && item.meta.title ? item.meta.title : "qwee"}
-            </span>
+            <span>{item.meta.title}</span>
             {item.meta && item.meta.closable ? (
               <Icon
                 type="md-close-circle"
@@ -108,6 +123,15 @@ export default {
           </div>
         );
       };
+    },
+    handleAvatarClick(name) {
+      if (name === "About") {
+        this.$router.push({ name });
+      } else if (name === "Logout") {
+        this.logout().then(() => {
+          this.$router.push({ name: "Login" });
+        });
+      }
     }
   }
 };
@@ -127,6 +151,17 @@ export default {
   }
   &-header {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    &-container {
+      .avatar {
+        float: right;
+        margin-right: 20px;
+        margin-top: 10px;
+        line-height: 40px;
+        img {
+          width: 100%;
+        }
+      }
+    }
   }
   .logo {
     margin-top: 10px;
@@ -142,6 +177,7 @@ export default {
       font-size: 20px;
     }
   }
+
   .my-content-wrapper {
     padding: 18px;
   }

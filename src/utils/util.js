@@ -230,3 +230,15 @@ export const excludeRouteFromTabs = route => {
     return item.name !== route.name;
   });
 };
+
+export const getTabListToLocal = tabList => {
+  return tabList.map(item => {
+    return {
+      name: item.name,
+      path: item.path,
+      meta: item.meta,
+      query: item.query,
+      params: item.params
+    };
+  });
+};

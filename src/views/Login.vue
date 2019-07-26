@@ -4,14 +4,14 @@
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form">
           <Form ref="formLogin" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
-            <FormItem label="用户名" prop="userName">
+            <FormItem prop="userName">
               <i-input v-model="form.userName" placeholder="请输入用户名">
                 <span slot="prepend">
                   <Icon :size="16" type="md-person"></Icon>
                 </span>
               </i-input>
             </FormItem>
-            <FormItem label="密码" prop="password">
+            <FormItem prop="password">
               <i-input type="password" v-model="form.password">
                 <span slot="prepend">
                   <Icon :size="16" type="md-lock"></Icon>
@@ -86,6 +86,7 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 300px;
   }
 }
 </style>

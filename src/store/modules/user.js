@@ -48,7 +48,10 @@ const actions = {
     });
   },
   logout() {
-    setToken("");
+    return new Promise(reslove => {
+      setToken("");
+      reslove();
+    });
   }
 };
 

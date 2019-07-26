@@ -4,7 +4,8 @@ import {
   routeEqual,
   localRead,
   localSave,
-  excludeRouteFromTabs
+  excludeRouteFromTabs,
+  getTabListToLocal
 } from "@/utils/util";
 const state = {
   tabList: JSON.parse(localRead("tabList")) || [
@@ -12,18 +13,6 @@ const state = {
   ]
 };
 const getters = {};
-
-const getTabListToLocal = tabList => {
-  return tabList.map(item => {
-    return {
-      name: item.name,
-      path: item.path,
-      meta: item.meta,
-      query: item.query,
-      params: item.params
-    };
-  });
-};
 
 const mutations = {
   UPDATE_ROUTER(state, route) {
