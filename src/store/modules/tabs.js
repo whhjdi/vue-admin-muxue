@@ -3,10 +3,13 @@ import {
   getRouteNameFromTabList,
   routeEqual,
   localRead,
-  localSave
+  localSave,
+  excludeRouteFromTabs
 } from "@/utils/util";
 const state = {
-  tabList: JSON.parse(localRead("tabList")) || [{ name: "Home" }]
+  tabList: JSON.parse(localRead("tabList")) || [
+    { name: "Home", meta: { title: "首页" } }
+  ]
 };
 const getters = {};
 
@@ -21,9 +24,13 @@ const getTabListToLocal = tabList => {
     };
   });
 };
+
 const mutations = {
   UPDATE_ROUTER(state, route) {
-    if (!routeHasExist(state.tabList, route)) {
+    console.log(route);
+    console.log(excludeRouteFromTabs(route));
+
+    if (!routeHasExist(state.tabList, route) && excludeRouteFromTabs(route)) {
       state.tabList.push(route);
     }
     localSave("tabList", JSON.stringify(getTabListToLocal(state.tabList)));

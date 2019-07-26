@@ -1,5 +1,6 @@
 import clonedeep from "clonedeep";
 import Cookies from "js-cookie";
+import { routes } from "@/router/routes.js";
 
 export const setTitle = title => {
   window.document.title = title || "vue-admin-muxue";
@@ -221,4 +222,11 @@ export const localSave = (name, value) => {
 
 export const localRead = name => {
   return localStorage.getItem(name);
+};
+
+//排除一些路由
+export const excludeRouteFromTabs = route => {
+  return routes.every(item => {
+    return item.name !== route.name;
+  });
 };

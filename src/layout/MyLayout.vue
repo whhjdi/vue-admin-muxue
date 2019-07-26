@@ -9,7 +9,16 @@
       </side-menu>
     </Sider>
     <Layout>
-      <Header class="my-layout-header" :style="{ background: '#fff' }">Hello</Header>
+      <Header class="my-layout-header" :style="{ background: '#fff' }">
+        <Breadcrumb>
+          <template v-for="(item,index) in $route.matched">
+            <BreadcrumbItem :to="$route.name" :key="`bread_${index}`" v-if="item.name!=='Page'">
+              <Icon :type="item.meta.icon" size="16" :style="{lineHeight: '7px'}"></Icon>
+              <span>{{item.name}}</span>
+            </BreadcrumbItem>
+          </template>
+        </Breadcrumb>
+      </Header>
       <Content class="my-content-wrapper">
         <div class="tabs-wrapper">
           <Tabs
@@ -77,11 +86,14 @@ export default {
       });
     },
     labelRender(item) {
+      console.log(item, 1);
       return () => {
         return (
           <div>
-            <span>{item.meta.title}</span>
-            {item.meta.closable ? (
+            <span>
+              {item.meta && item.meta.title ? item.meta.title : "qwee"}
+            </span>
+            {item.meta && item.meta.closable ? (
               <Icon
                 type="md-close-circle"
                 style="line-height:12px;margin-left:6px;margin-right:0"

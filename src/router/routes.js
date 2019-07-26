@@ -3,7 +3,7 @@ export const routesMap = [
   {
     path: "/",
     name: "Page",
-    redirect: "Home",
+    redirect: "home",
     component: MyLayout,
     meta: {
       title: "首页",
@@ -68,7 +68,7 @@ export const routesMap = [
         }
       },
       {
-        path: "/menu-page",
+        path: "menu-page",
         name: "MenuPage",
         component: () =>
           import(/* webpackChunkName: "MenuPage" */ "../views/MenuPage.vue"),
