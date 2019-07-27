@@ -19,12 +19,7 @@
           iconColor="#rgba(0,0,0,0.9)"
           :showTitle="true"
         ></re-dropdown>
-        <DropdownItem
-          v-else
-          :key="`Dropdown_${index}_${i}`"
-          :name="item.name"
-          >{{ item.meta.title }}</DropdownItem
-        >
+        <DropdownItem v-else :key="`Dropdown_${index}_${i}`" :name="item.name">{{ item.meta.title }}</DropdownItem>
       </template>
     </DropdownMenu>
   </Dropdown>
@@ -51,8 +46,7 @@ export default {
   computed: {
     dropmenuStyle() {
       return {
-        textAlign: this.showTitle ? "left" : "center",
-        padding: this.showTitle ? "10px 0" : ""
+        padding: this.showTitle ? "10px 25px" : ""
       };
     }
   },
@@ -71,6 +65,7 @@ export default {
   padding: 5px 0;
 }
 .ivu-dropdown-menu {
+  text-align: center;
   .ivu-dropdown {
     padding: 8px 0;
     &:hover {

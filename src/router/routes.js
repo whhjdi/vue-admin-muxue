@@ -22,7 +22,7 @@ export const routesMap = [
         component: { render: h => h("router-view") },
         meta: {
           title: "组件",
-          icon: "md-ionitron"
+          icon: "ios-medal"
         },
         children: [
           {
@@ -81,7 +81,7 @@ export const routesMap = [
         component: { render: h => h("router-view") },
         meta: {
           title: "ZUI",
-          icon: "md-pizza",
+          icon: "md-color-palette",
           closable: true
         },
         children: [
@@ -119,6 +119,54 @@ export const routesMap = [
               icon: "ios-book",
               closable: true
             }
+          }
+        ]
+      },
+      {
+        path: "/other",
+        name: "Other",
+        component: { render: h => h("router-view") },
+        meta: {
+          title: "其他",
+          icon: "md-bug",
+          closable: true
+        },
+        children: [
+          {
+            path: "/test",
+            name: "Test",
+            component: { render: h => h("router-view") },
+            meta: {
+              title: "测试",
+              icon: "ios-build",
+              closable: true
+            },
+            children: [
+              {
+                path: "/test1",
+                name: "Test1",
+                component: {
+                  render: h => h("div", "递归组件测试1")
+                },
+                meta: {
+                  title: "测试1",
+                  icon: "ios-bulb-outline",
+                  closable: true
+                }
+              },
+              {
+                path: "/test2",
+                name: "Test2",
+                component: {
+                  render: h => h("div", "递归组件测试2")
+                },
+                meta: {
+                  title: "测试2",
+                  icon: "ios-bulb",
+                  closable: true
+                }
+              }
+            ]
           }
         ]
       }

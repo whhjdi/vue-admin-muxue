@@ -184,8 +184,8 @@ export default {
     margin-bottom: 10px;
     text-align: center;
     &-img {
-      width: 40px;
-      vertical-align: -12px;
+      width: 44px;
+      vertical-align: -14px;
     }
     &-name {
       margin-left: 10px;
@@ -196,6 +196,7 @@ export default {
 
   .my-content-wrapper {
     padding: 20px;
+    overflow: scroll;
   }
   .my-footer-wrapper {
     background: #fff;

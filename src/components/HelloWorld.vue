@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <Card :title="`当前用户是{${value.name}}`">
+      <p slot="extra">权限:[ {{value.access}} ]</p>
+      <h1>{{ msg }}</h1>
+    </Card>
   </div>
 </template>
 
@@ -11,9 +14,14 @@ export default {
   props: {
     msg: String
   },
+  data() {
+    return {
+      value: {}
+    };
+  },
   mounted() {
     getUserInfo({ id: 12 }).then(res => {
-      console.log(res);
+      this.value = res.data.data;
     });
   },
   methods: {}
