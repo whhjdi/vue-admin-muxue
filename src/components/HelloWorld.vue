@@ -2,7 +2,7 @@
   <div class="hello">
     <Card :title="`当前用户是{${value.name}}`">
       <p slot="extra">权限:[ {{value.access}} ]</p>
-      <h1>{{ msg }}</h1>
+      <div v-html="msg" class="msg"></div>
     </Card>
   </div>
 </template>
@@ -21,9 +21,17 @@ export default {
   },
   mounted() {
     getUserInfo({ id: 12 }).then(res => {
-      this.value = res.data.data;
+      this.value = res.data;
     });
   },
   methods: {}
 };
 </script>
+<style lang="less">
+.msg {
+  > ul {
+    padding-left: 20px;
+  }
+}
+</style>
+

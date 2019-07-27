@@ -64,13 +64,16 @@
             ></TabPane>
           </Tabs>
           <div class="view-wrapper">
-            <Card>
+            <Card shadow>
               <router-view></router-view>
             </Card>
           </div>
         </div>
       </Content>
-      <Footer class="my-footer-wrapper">@copyright 沐雪 2019</Footer>
+      <Footer class="my-footer-wrapper">
+        @copyright
+        <a href="//github.com/whhjdi" target="_blank">沐雪</a> 2019
+      </Footer>
     </Layout>
   </Layout>
 </template>
