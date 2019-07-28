@@ -16,9 +16,6 @@ const getters = {};
 
 const mutations = {
   UPDATE_ROUTER(state, route) {
-    console.log(route);
-    console.log(excludeRouteFromTabs(route));
-
     if (!routeHasExist(state.tabList, route) && excludeRouteFromTabs(route)) {
       state.tabList.push(route);
     }

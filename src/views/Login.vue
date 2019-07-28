@@ -50,16 +50,12 @@ export default {
   methods: {
     ...mapActions(["handleLogin"]),
     handleSubmit() {
-      console.log(1);
       this.$refs.formLogin.validate(valid => {
-        console.log(valid);
         if (valid) {
           this.handleLogin({
             userName: this.form.userName,
             password: this.form.password
           }).then(res => {
-            console.log(res);
-
             if (res.code === 200) {
               this.$router.push({
                 name: "Home"

@@ -155,11 +155,11 @@ export default {
   height: 100%;
   .my-sider-wrapper {
     overflow: hidden;
-    height: 100%;
+    height: ~"calc(100% - 48px)";
     .ivu-layout-sider-children {
       overflow-y: scroll;
-      // margin-right: -10px;
-      // padding-right: 10px;
+      margin-right: -20px;
+      padding-right: 20px;
     }
   }
   .ivu-layout-header {
@@ -199,7 +199,7 @@ export default {
 
   .my-content-wrapper {
     padding: 20px;
-    overflow: scroll;
+    overflow-y: scroll;
   }
   .my-footer-wrapper {
     background: #fff;

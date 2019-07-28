@@ -26,7 +26,6 @@ export default {
   },
   methods: {
     resize() {
-      console.log("resize");
       this.dom.resize();
     },
     initCharts() {
