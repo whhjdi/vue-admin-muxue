@@ -80,37 +80,37 @@ export default {
         {
           title: "沐雪音乐",
           icon: "md-musical-note",
-          url: "https://whhjdi.xyz/musicByMuxue/dist/#/home",
+          url: "https://whhjdi.github.io/musicByMuxue/dist/#/home",
           color: "#3cb1ff"
         },
         {
           title: "沐雪商城",
           icon: "ios-appstore",
-          url: "https://whhjdi.xyz/shop-vue/dist/#/",
+          url: "https://whhjdi.github.io/shop-vue/dist/#/",
           color: "#ff7477"
         },
         {
           title: "React组件",
           icon: "md-outlet",
-          url: "http://whhjdi.xyz/react-ts/index.html#/button",
+          url: "http://whhjdi.github.io/react-ts/index.html#/button",
           color: "#28da99"
         },
         {
           title: "涂鸦画板",
           icon: "md-browsers",
-          url: "https://whhjdi.xyz/canvas-demo/",
+          url: "https://whhjdi.github.io/canvas-demo/",
           color: "#9a83da"
         },
         {
           title: "简历编辑",
           icon: "ios-book",
-          url: "https://whhjdi.xyz/vue-resumeEdit/dist/#/",
+          url: "https://whhjdi.github.io/vue-resumeEdit/dist/#/",
           color: "#ffc367"
         },
         {
           title: "CNode",
           icon: "logo-buffer",
-          url: "https://whhjdi.xyz/CNode-taro/dist/",
+          url: "https://whhjdi.github.io/CNode-taro/dist/",
           color: "#324555"
         }
       ],
