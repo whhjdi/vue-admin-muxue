@@ -4,5 +4,5 @@
 //     : "http://localhost:9527";
 export const baseURL =
   process.env.NODE_ENV === "production"
-    ? "https://whhjdi.github.io/vue-admin-muxue"
+    ? "https://whhjdi.github.io/vue-admin-muxue/mock"
     : "http://localhost:9527";
