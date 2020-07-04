@@ -1,6 +1,9 @@
-
 <template>
-  <button class="z-button" :class="[size,color,shape]" @click="$emit('click')">
+  <button
+    class="z-button"
+    :class="[size, color, shape]"
+    @click="$emit('click')"
+  >
     <span v-if="loading">加载中</span>
     <div v-else>
       <slot>默认</slot>

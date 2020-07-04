@@ -4,7 +4,9 @@
       <h1>ZTabs 组件</h1>
       <h2>使用指南</h2>
 
-      <p>组件的结构如下方代码所示,本组件支持自定义颜色，包括滑动条颜色自定义和active的item颜色自定义，支持在head里添加button等其他元素，放到右边</p>
+      <p>
+        组件的结构如下方代码所示,本组件支持自定义颜色，包括滑动条颜色自定义和active的item颜色自定义，支持在head里添加button等其他元素，放到右边
+      </p>
       <p>ZTaabs需要传入selectedTab</p>
       <p>ZTabsHead需要传入offset(组件相对于页面的位置)</p>
 
@@ -26,7 +28,10 @@
     </div>
     <div class="item">
       <h2>配色建议</h2>
-      <p>蓝色:#3cb1ff; 红色:#ff7477; 绿色:#28da99; 紫色:#9a83da; 黄色:#ffc367; 黑色:#324555</p>
+      <p>
+        蓝色:#3cb1ff; 红色:#ff7477; 绿色:#28da99; 紫色:#9a83da; 黄色:#ffc367;
+        黑色:#324555
+      </p>
     </div>
   </div>
 </template>

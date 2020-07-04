@@ -1,4 +1,4 @@
- <template>
+<template>
   <div class="z-tabs-Content">
     <slot></slot>
   </div>

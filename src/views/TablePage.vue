@@ -1,6 +1,11 @@
 <template>
   <div>
-    <edit-table :columns="columns" :value="tableData" v-model="tableData" @on-edit="handleEdit"></edit-table>
+    <edit-table
+      :columns="columns"
+      :value="tableData"
+      v-model="tableData"
+      @on-edit="handleEdit"
+    ></edit-table>
   </div>
 </template>
 
@@ -24,8 +29,8 @@ export default {
     };
   },
   methods: {
-    handleEdit({ row, column, index, newVal }) {
-      console.log({ row, column, index, newVal });
+    handleEdit() {
+      // console.log({ row, column, index, newVal });
     }
   },
   mounted() {

@@ -3,7 +3,12 @@
     <div class="login-container">
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form">
-          <Form ref="formLogin" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
+          <Form
+            ref="formLogin"
+            :model="form"
+            :rules="rules"
+            @keydown.enter.native="handleSubmit"
+          >
             <FormItem prop="userName">
               <i-input v-model="form.userName" placeholder="请输入用户名">
                 <span slot="prepend">
@@ -73,7 +78,8 @@ export default {
 .login-wrapper {
   width: 100%;
   height: 100%;
-  background-image: url("../assets/images/bg.jpg");
+  // background-image: url("../assets/images/bg.jpg");
+  background-color: #2C3E50;
   background-size: cover;
   background-position: center;
   position: relative;

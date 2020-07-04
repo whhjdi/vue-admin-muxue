@@ -19,7 +19,12 @@
           iconColor="#rgba(0,0,0,0.9)"
           :showTitle="true"
         ></re-dropdown>
-        <DropdownItem v-else :key="`Dropdown_${index}_${i}`" :name="item.name">{{ item.meta.title }}</DropdownItem>
+        <DropdownItem
+          v-else
+          :key="`Dropdown_${index}_${i}`"
+          :name="item.name"
+          >{{ item.meta.title }}</DropdownItem
+        >
       </template>
     </DropdownMenu>
   </Dropdown>

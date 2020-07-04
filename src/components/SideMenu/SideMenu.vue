@@ -16,7 +16,8 @@
           :parent="item"
           :index="index"
           :key="`menu_item_${index}`"
-        >{{ item.meta.title }}</re-side-submenu>
+          >{{ item.meta.title }}</re-side-submenu
+        >
         <menu-item v-else :name="item.name" :key="`menu_item_${index}`">
           <Icon :type="item.meta.icon" size="20" class="my-menu-item-icon" />
           {{ item.meta.title }}

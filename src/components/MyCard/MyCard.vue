@@ -2,10 +2,10 @@
   <Card class="card-wrapper" :padding="0">
     <a :href="url" target="_blank" style="color:#000">
       <div class="content-con">
-        <div class="left-area" :style="{background: color, width: leftWidth}">
+        <div class="left-area" :style="{ background: color, width: leftWidth }">
           <Icon :type="icon" size="36" color="#fff" class="card-icon" />
         </div>
-        <div class="right-area" :style="{width: rightWidth}">
+        <div class="right-area" :style="{ width: rightWidth }">
           <div>
             <slot></slot>
           </div>

@@ -13,6 +13,7 @@ export default {
   },
   props: {
     name: {
+      // eslint-disable-next-line vue/require-prop-type-constructor
       type: String | Number,
       required: true
     }

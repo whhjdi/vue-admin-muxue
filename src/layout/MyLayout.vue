@@ -1,6 +1,11 @@
 <template>
   <Layout class="my-layout">
-    <Sider v-model="collapsed" collapsible breakpoint="sm" class="my-sider-wrapper">
+    <Sider
+      v-model="collapsed"
+      collapsible
+      breakpoint="sm"
+      class="my-sider-wrapper"
+    >
       <side-menu :collapsed="collapsed" :list="routers">
         <div class="logo">
           <img src="../assets/images/logo.png" class="logo-img" />
@@ -11,15 +16,19 @@
     <Layout>
       <Header class="my-layout-header" :style="{ background: '#fff' }">
         <div class="my-layout-header-container">
-          <div class="breadcrumn-wrapper" :style="{float:'left'}">
+          <div class="breadcrumn-wrapper" :style="{ float: 'left' }">
             <Breadcrumb>
               <BreadcrumbItem
-                v-for="(item,index) in list"
-                :to="{path:$route.path}"
+                v-for="(item, index) in list"
+                :to="{ path: $route.path }"
                 :key="`bread_${index}`"
               >
-                <Icon :type="item.meta.icon" size="16" :style="{verticalAlign:'-2px'}"></Icon>
-                <span>{{item.meta.title}}</span>
+                <Icon
+                  :type="item.meta.icon"
+                  size="16"
+                  :style="{ verticalAlign: '-2px' }"
+                ></Icon>
+                <span>{{ item.meta.title }}</span>
               </BreadcrumbItem>
             </Breadcrumb>
           </div>
@@ -27,16 +36,21 @@
           <div class="avatar">
             <Dropdown>
               <Badge dot>
-                <Avatar shape="circle" :src="require('../assets/images/avatar.jpeg')" />
+                <Avatar
+                  shape="circle"
+                  :src="require('../assets/images/avatar.jpeg')"
+                />
                 <Icon type="ios-arrow-down"></Icon>
               </Badge>
               <DropdownMenu slot="list">
                 <DropdownItem name="About">
-                  <a href="//github.com/whhjdi/vue-admin-muxue" target="_blank">项目地址</a>
+                  <a href="//github.com/whhjdi/vue-admin-muxue" target="_blank"
+                    >项目地址</a
+                  >
                 </DropdownItem>
                 <DropdownItem>
                   <a>
-                    <router-link :to="{path:'/about'}">关于</router-link>
+                    <router-link :to="{ path: '/about' }">关于</router-link>
                   </a>
                 </DropdownItem>
                 <DropdownItem name="Logout">

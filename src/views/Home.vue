@@ -19,19 +19,27 @@
           :color="item.color"
           :url="item.url"
         >
-          <p>{{item.title}}</p>
+          <p>{{ item.title }}</p>
         </my-card>
       </i-col>
     </Row>
     <Row :gutter="20">
       <i-col :md="24" :lg="12" style="margin-bottom: 20px;">
         <Card title="饼图">
-          <my-charts :option="option1" :style="{height:'400px'}" chartType="bar"></my-charts>
+          <my-charts
+            :option="option1"
+            :style="{ height: '400px' }"
+            chartType="bar"
+          ></my-charts>
         </Card>
       </i-col>
       <i-col :md="24" :lg="12" style="margin-bottom: 20px;">
         <Card title="柱状图">
-          <my-charts :option="option2" :style="{height:'400px'}" chartType="bar"></my-charts>
+          <my-charts
+            :option="option2"
+            :style="{ height: '400px' }"
+            chartType="bar"
+          ></my-charts>
         </Card>
       </i-col>
     </Row>

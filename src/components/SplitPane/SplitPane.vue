@@ -1,6 +1,9 @@
 <template>
   <div class="split-pane-wrapper" ref="splitPane">
-    <div class="pane pane-left" :style="{ width: leftOffsetPercent, paddingRight: padding }">
+    <div
+      class="pane pane-left"
+      :style="{ width: leftOffsetPercent, paddingRight: padding }"
+    >
       <slot name="left"></slot>
     </div>
 
@@ -10,7 +13,10 @@
       @mousedown="handleMousedown"
       @mouseup="handleMouseup"
     ></div>
-    <div class="pane pane-right" :style="{ left: leftOffsetPercent, paddingLeft: padding }">
+    <div
+      class="pane pane-right"
+      :style="{ left: leftOffsetPercent, paddingLeft: padding }"
+    >
       <slot name="right"></slot>
     </div>
   </div>

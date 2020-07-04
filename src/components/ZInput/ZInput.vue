@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{error}">
+  <div class="wrapper" :class="{ error }">
     <input
       type="text"
       class="z-input"
@@ -7,16 +7,16 @@
       :value="value"
       :placeholder="placeholder"
       :disabled="disabled"
-      @change="$emit('change',$event.target.value)"
-      @input="$emit('input',$event.target.value)"
-      @focus="$emit('focus',$event.target.value)"
-      @blur="$emit('blur',$event.target.value)"
+      @change="$emit('change', $event.target.value)"
+      @input="$emit('input', $event.target.value)"
+      @focus="$emit('focus', $event.target.value)"
+      @blur="$emit('blur', $event.target.value)"
     />
     <div v-if="error" class="error-msg">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-information" />
       </svg>
-      <span>{{error}}</span>
+      <span>{{ error }}</span>
     </div>
   </div>
 </template>

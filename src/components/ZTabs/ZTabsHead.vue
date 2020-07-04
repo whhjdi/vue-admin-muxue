@@ -26,7 +26,7 @@ export default {
       this.$refs.line.style.width = `93px`;
       this.$refs.line.style.borderBottomColor = this.color;
       this.eventBus.$on("update:selected", (item, vm) => {
-        let { width, height, left, top } = vm.$el.getBoundingClientRect();
+        let { width, left } = vm.$el.getBoundingClientRect();
         this.$refs.line.style.width = `${width}px`;
         this.$refs.line.style.left = `${left - this.offset}px`;
       });

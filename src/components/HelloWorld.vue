@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <Card :title="`当前用户是{${value.name}}`">
-      <p slot="extra">权限:[ {{value.access}} ]</p>
+      <p slot="extra">权限:[ {{ value.access }} ]</p>
       <div v-html="msg" class="msg"></div>
     </Card>
   </div>
@@ -34,4 +34,3 @@ export default {
   }
 }
 </style>
-

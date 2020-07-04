@@ -9,7 +9,8 @@ export default {
   inject: ["eventBus"],
   props: {
     name: {
-      type: String | Number,
+      // eslint-disable-next-line vue/require-prop-type-constructor
+      type: Number | String,
       required: true
     },
     activeColor: {
